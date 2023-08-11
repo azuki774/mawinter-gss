@@ -6,7 +6,8 @@ from google.oauth2 import service_account
 import gspread
 import mawinter
 import time
-
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -20,7 +21,8 @@ class JobClass:
     jobInterval = 0 # 何分に1回起動するかを指定。0なら1回起動して終了。
     api_endpoint = '' # ex. http://hogehoge/v2/record/summary/2023
     spreadsheet_url = '' # spreadsheet_url = "https://docs.google.com/spreadsheets/d/XXXXXXXXXXXXXXXXXXX"
-    worksheet_name = '' # ex. FY2023'
+    worksheet_name = '' # ex. FY2023
+    last_sync_cell = 'P1' # default 'P1'
 
     # internal use
     spreadsheet = None # spreadsheet = gc.open_by_url(spreadsheet_url)
@@ -51,7 +53,9 @@ class JobClass:
         self.sheet_fetch_data = self.worksheet.get_all_values(value_render_option='FORMULA')
 
     def _write(self, data):
+        tokyo = ZoneInfo("Asia/Tokyo") # タイムゾーン情報を取得
         self.worksheet.update('A1', data, raw=False)
+        self.worksheet.update(self.last_sync_cell, str(datetime.now(tokyo)))
 
     def _load_api_json(self, fetch_data):
         # output category_id -> [category_name,4,5,6,7,8,9,10,11,12,1,2,3]

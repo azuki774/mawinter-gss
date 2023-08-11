@@ -4,9 +4,9 @@ services:
     image: mawinter-script-gss
     container_name: mawinter-script-gss
     environment:
-      - MAWINTER_API_ENDPOINT="mock" # mawinter-api の /v2/record/summary/YYYY のエンドポイント。`mock` を入れると、ダミーデータを代わりに挿入する。
-      - SPREADSHEET_URL="" # スプレッドシートのURL
-      - WORKSHEET_NAME="" # ワークシートの名前
-      - JOB_INTERVAL="30" # 更新する頻度（分）
+      - MAWINTER_API_ENDPOINT=mock # mawinter-api の /v2/record/summary/YYYY のエンドポイント。`mock` を入れると、ダミーデータを代わりに挿入する。
+      - SPREADSHEET_URL="https://docs.google.com/spreadsheets/d/XXXXXXXXXXXX" # スプレッドシートのURL
+      - WORKSHEET_NAME=FY2023 # ワークシートの名前
+      - JOB_INTERVAL=30 # 更新する頻度（分）
     volumes:
       - ./.secret/:/.secret/
