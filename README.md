@@ -5,11 +5,13 @@
 - スプレッドシートのA列に `category_id` が記載されている行を、[ `category_id`, `category_name`, `4月の額`, `5月の額`, ... , `3月の額`] に変更する（その行含めて、それ以外のセルは上書きしない）
 
 - コンテナ内の `/.secret/credential.json` （リポジトリ内では `deployment/gss/.secret/credential.json`）に、GSS の サービスアカウント用のシークレットJSON を配置する。
+
+- セルの `P1`（現状固定）に最終更新日を表示する。
 ## 環境変数
 ```
     environment:
-      - MAWINTER_API_ENDPOINT="" # mawinter-api の /v2/record/summary/YYYY のエンドポイント
+      - MAWINTER_API_ENDPOINT=mock # mawinter-api の /v2/record/summary/YYYY のエンドポイント。`mock` を入れると、ダミーデータを代わりに挿入する。
       - SPREADSHEET_URL="" # スプレッドシートのURL
-      - JOB_INTERVAL="30" # 更新する頻度（分）
-      - WORKSHEET_NAME="" # ワークシートの名前
+      - WORKSHEET_NAME= # ワークシートの名前 ex. FY2023
+      - JOB_INTERVAL=30 # 更新する頻度（分）
 ```
