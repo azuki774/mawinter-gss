@@ -92,7 +92,12 @@ class JobClass:
             logger.info('api mawinter-api start')
 
             # source API call
-            api_fetch_data = mawinter.get(self.api_endpoint)
+            if self.api_endpoint != 'mock':
+                api_fetch_data = mawinter.get(self.api_endpoint)
+            else:
+                # use mock
+                api_fetch_data = mawinter.get_dummy(self.api_endpoint)
+
             api_dict = self._load_api_json(api_fetch_data)
             logger.info('fetch mawinter-api complete')
 
