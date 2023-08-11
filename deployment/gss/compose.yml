@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mawinter-script-gss:
+    image: mawinter-script-gss
+    container_name: mawinter-script-gss
+    environment:
+      - MAWINTER_API_ENDPOINT="" # mawinter-api の /v2/record/summary/YYYY のエンドポイント
+      - SPREADSHEET_URL="" # スプレッドシートのURL
+      - JOB_INTERVAL="30" # 更新する頻度（分）
+      - WORKSHEET_NAME="" # ワークシートの名前
+    volumes:
+      - ../../.secret/:/.secret/

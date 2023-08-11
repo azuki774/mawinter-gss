@@ -1,0 +1,5 @@
+python-json-logger==2.0.7
+pytest==7.3.2
+google==3.0.0
+google-auth==2.22.0
+gspread==5.10.0
