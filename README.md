@@ -5,6 +5,8 @@
 - スプレッドシートのA列に `category_id` が記載されている行を、[ `category_id`, `category_name`, `4月の額`, `5月の額`, ... , `3月の額`] に変更する（その行含めて、それ以外のセルは上書きしない）
 
 - コンテナ内の `/.secret/credential.json` （リポジトリ内では `deployment/gss/.secret/credential.json`）に、GSS の サービスアカウント用のシークレットJSON を配置する。
+
+- セルの `P1`（現状固定）に最終更新日を表示する。
 ## 環境変数
 ```
     environment:
