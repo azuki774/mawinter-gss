@@ -1,4 +1,4 @@
-# mawinter-client
+# mawinter-gss
 
 - 家計簿API の https://github.com/azuki774/mawinter-server の情報を Google Spread Sheetに表示、定期反映するソフト。
 
