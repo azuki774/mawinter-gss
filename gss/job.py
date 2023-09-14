@@ -73,7 +73,7 @@ class JobClass:
 
         write_data = []
         for f in self.sheet_fetch_data:
-            fkey = f[0]
+            fkey = str(f[0])
             if fkey in api_dict:
                 # 書き換え
                 insert_data = f
