@@ -14,9 +14,11 @@ logger.addHandler(h)
 
 def get(endpoint):
     response = requests.get(endpoint)
+    print(response)
     if response.status_code == 200:
         json_data = response.json()
         logger.info("fetch ok")
+        print(json_data)
         return json_data
     else:
         logger.error("unexpected status code: {}".format(response.status_code))
