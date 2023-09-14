@@ -104,13 +104,16 @@ class JobClass:
 
             api_dict = self._load_api_json(api_fetch_data)
             logger.info('fetch mawinter-api complete')
+            print(api_dict)
 
             # sheet fetch
             logger.info('fetch spreadsheet start')
             self._fetch()
+            print(self.sheet_fetch_data)
 
             write_data = self._make_write_data(api_dict=api_dict)
             logger.info('fetch spreadsheet complete')
+            print(write_data)
 
             self._write(write_data)
             logger.info('spreadsheet is updated sucessfully')
